@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | HELPHOP</title>
+
+  <link rel="stylesheet" href="{% static 'helphop/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'helphop/css/login.css' %}">
+
+  <style>
+
+        html {
+            text-align: center;
+        }
+
+    .back-home {
+      border: 1px solid rgba(240, 248, 255, 0.284);
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 35px;
+      padding-right: 40px;
+      background-color: rgba(240, 248, 255, 0.284);
+      border-radius: 18px;
+      font-size: 18px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .back-home:hover {
+      background-color: rgba(240, 248, 255, 0.574);
+    }
+
+    .back-home:hover,
+    .back-home:focus,
+    .back-home:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <a href="{% url 'landing' %}" class="site-logo">
+      <img src="{% static 'helphop/images/logo.svg' %}" alt="HELPHOP"
+        style="height: 60px; margin-bottom: 1.5rem; margin-left: 0; position: static;">
+    </a>
+
+
+    <form method="post" id="form">
+      {% csrf_token %}
+
+      <h1>Login</h1>
+      <div class="input-group">
+        <label for="email-input">
+          <span>@</span>
+        </label>
+        <input type="email" name="email" id="email-input" placeholder="example@gmail.com" required>
+      </div>
+
+
+      <div class="input-group">
+        <label for="password-input">
+          <img src="{% static 'helphop/images/lock.png' %}" alt="lock" style="height: 1.2em;">
+        </label>
+        <input type="password" name="password" id="password-input" placeholder="Password" required>
+      </div>
+
+
+      <button type="submit">Login</button>
+      <p class="form-actions">
+        Don't have an account?
+        <a href="{% url 'register' %}">Sign Up</a>
+      </p>
+
+    </form>
+
+    <a href="{% url 'landing' %}" class="back-home" style="color: white;">
+      ← Back
+    </a>
+
+  </div>
+
+  <script src="{% static 'js/validation.js' %}" defer></script>
+
+</body>
+
+</html>

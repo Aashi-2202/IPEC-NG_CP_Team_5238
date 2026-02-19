@@ -1,0 +1,540 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | HELPHOP Customer</title>
+    <link rel="stylesheet" href="{% static 'helphop/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'helphop/css/customer_pages.css' %}">
+    <link rel="stylesheet" href="{% static 'helphop/css/card.css' %}">
+    <link rel="stylesheet" href="{% static 'helphop/css/services.css' %}">
+
+    <style>
+        .footer {
+      text-align: center;
+      z-index: 1;
+      color: rgb(236, 235, 235);
+      font-size: 16px;
+      background-color: rgb(46, 46, 46);
+      height: 40px;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+
+    }
+        .aesthetic-bg {
+            position: relative;
+            background:
+                linear-gradient(120deg,
+                    #e7ecfb 0%,
+                    #d2e4fa 40%,
+                    #a4d0fc 70%,
+                    #74b9fe 100%);
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+
+        .customer-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #0a2540;
+            color: white;
+            padding: 0 32px;
+            height: 67px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 4px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link.active {
+            color: white;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-user-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .nav-btn {
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn-outline {
+            background-color: transparent;
+            border: 1.5px solid #60a5fa;
+            color: #60a5fa;
+        }
+
+        .nav-btn-outline:hover {
+            background-color: #60a5fa;
+            color: white;
+            border-color: #60a5fa;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 992px) {
+            .customer-nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-link {
+                font-size: 14.5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .customer-nav {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                margin-top: 16px;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px 24px;
+            }
+
+            .nav-user {
+                order: 2;
+                margin-left: auto;
+            }
+
+            .nav-logo {
+                order: 1;
+            }
+        }
+
+        .customer-nav img {
+            margin-left: 16px;
+        }
+    </style>
+</head>
+
+<body class="customer-pages-page customer-services-page aesthetic-bg">
+
+    <div class="page-bg">
+        <div class="page-bg-gradient"></div>
+        <div class="page-bg-dots"></div>
+    </div>
+
+    <nav class="customer-nav">
+        <a href="{% url 'customer_home' %}" class="nav-logo">
+            <img src="{% static 'helphop/images/logo.svg' %}" alt="HELPHOP">
+        </a>
+        <ul class="nav-links">
+            <li><a href="{% url 'customer_home' %}" class="nav-link" style="text-decoration: none;">Home</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-link" style="text-decoration: none;">Contact</a></li>
+            <li><a href="{% url 'customer_services' %}" class="nav-link active"
+                    style="text-decoration: none;">Services</a></li>
+            <li><a href="{% url 'customer_profile' %}" class="nav-link" style="text-decoration: none;">Profile</a></li>
+            <li><a href="{% url 'customer_settings' %}" class="nav-link" style="text-decoration: none;">Settings</a>
+            </li>
+            <li><a href="{% url 'customer_dashboard' %}" class="nav-link" style="text-decoration: none;">Dashboard</a>
+            </li>
+        </ul>
+
+        {% if request.user.is_authenticated %}
+        <div class="nav-user">
+            <span class="nav-user-name">Hi, {{ request.user.first_name }}</span>
+            <a href="{% url 'logout' %}" class="nav-btn nav-btn-outline">Logout</a>
+        </div>
+        {% endif %}
+    </nav>
+
+    <main class="customer-main">
+
+        <header class="page-header">
+            <span class="page-badge">Explore</span>
+            <h1 class="page-title">Household <span class="page-title-accent">services</span></h1> <br><br>
+            <p class="page-desc intro-text">
+                Our verified professionals are ready to help with everyday household needs — from quick fixes to full
+                deep cleans.
+                Choose instant booking (as fast as 30 minutes) or schedule at a time that suits you. Transparent
+                pricing,
+                no hidden fees, and 100% satisfaction guarantee.
+            </p> <br><br>
+            <p class="page-desc">Explore household services. Book instant (30 min) or schedule for later.</p>
+        </header>
+
+        <div class="services-grid">
+
+            <a href="javascript:void(0)" class="service-tile" onclick="openModal('homeCleaningModal')">
+                <span class="service-tile-icon-wrap"><span class="service-tile-icon">🧹</span></span>
+                <h3>Home cleaning</h3>
+                <p>Full home or room-wise cleaning</p>
+            </a>
+
+            <a href="javascript:void(0)" class="service-tile" onclick="openModal('plumbingModal')">
+                <span class="service-tile-icon-wrap"><span class="service-tile-icon">🔧</span></span>
+                <h3>Plumbing</h3>
+                <p>Fixes, installations, maintenance</p>
+            </a>
+
+            <a href="javascript:void(0)" class="service-tile" onclick="openModal('electricalModal')">
+                <span class="service-tile-icon-wrap"><span class="service-tile-icon">💡</span></span>
+                <h3>Electrical</h3>
+                <p>Wiring, fittings, safety checks</p>
+            </a>
+
+            <a href="javascript:void(0)" class="service-tile" onclick="openModal('paintingModal')">
+                <span class="service-tile-icon-wrap"><span class="service-tile-icon">🎨</span></span>
+                <h3>Painting</h3>
+                <p>Interior and exterior painting</p>
+            </a>
+
+            <a href="javascript:void(0)" class="service-tile" onclick="openModal('laundryModal')">
+                <span class="service-tile-icon-wrap"><span class="service-tile-icon">🧺</span></span>
+                <h3>Laundry</h3>
+                <p>Wash, iron, and fold</p>
+            </a>
+
+            <a href="javascript:void(0)" class="service-tile" onclick="openModal('repairsModal')">
+                <span class="service-tile-icon-wrap"><span class="service-tile-icon">🛠</span></span>
+                <h3>Repairs</h3>
+                <p>General repairs and handyman</p>
+            </a>
+
+        </div>
+
+        <section class="cta-bottom">
+            <h2>Need help right now?</h2>
+            <p>Join thousands of happy customers in Delhi who trust HELPHOP for reliable, professional home services
+                every week.</p>
+            <a href="{% url 'customer_dashboard' %}" class="cta-btn">Go to Dashboard →</a>
+        </section>
+
+    </main>
+
+    <!-- Home Cleaning Modal -->
+    <div id="homeCleaningModal" class="modal-overlay" data-service="home-cleaning">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Home Cleaning</h2>
+                <button class="close-btn" onclick="closeModal('homeCleaningModal')">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="section">
+                    <h4>Included</h4>
+                    <ul>
+                        <li>Floor sweeping & mopping</li>
+                        <li>Bathroom cleaning</li>
+                        <li>Kitchen surface cleaning</li>
+                        <li>Dusting of furniture</li>
+                    </ul>
+                </div>
+
+                <div class="section not-included">
+                    <h4>Not Included</h4>
+                    <ul>
+                        <li>Wall painting</li>
+                        <li>Furniture moving</li>
+                        <li>Deep appliance cleaning</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="action-btn book-btn" onclick="goToBookNow(this)">
+                        Book Now
+                    </button>
+                    <button type="button" class="action-btn schedule-btn" onclick="goToSchedule(this)">
+                        Schedule
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plumbing Modal -->
+    <div id="plumbingModal" class="modal-overlay" data-service="plumbing">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Plumbing</h2>
+                <button class="close-btn" onclick="closeModal('plumbingModal')">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="section">
+                    <h4>Included</h4>
+                    <ul>
+                        <li>Leak fixing</li>
+                        <li>Tap & pipe installation</li>
+                        <li>Drain unclogging</li>
+                    </ul>
+                </div>
+
+                <div class="section not-included">
+                    <h4>Not Included</h4>
+                    <ul>
+                        <li>Complete pipeline replacement</li>
+                        <li>Bathroom renovation</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="action-btn book-btn" onclick="goToBookNow(this)">
+                        Book Now
+                    </button>
+                    <button type="button" class="action-btn schedule-btn" onclick="goToSchedule(this)">
+                        Schedule
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Electrical Modal -->
+    <div id="electricalModal" class="modal-overlay" data-service="electrical">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Electrical</h2>
+                <button class="close-btn" onclick="closeModal('electricalModal')">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="section">
+                    <h4>Included</h4>
+                    <ul>
+                        <li>Switch & socket repair</li>
+                        <li>Fan and light installation</li>
+                        <li>Safety inspection</li>
+                    </ul>
+                </div>
+
+                <div class="section not-included">
+                    <h4>Not Included</h4>
+                    <ul>
+                        <li>Complete house rewiring</li>
+                        <li>Industrial electrical work</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="action-btn book-btn" onclick="goToBookNow(this)">
+                        Book Now
+                    </button>
+                    <button type="button" class="action-btn schedule-btn" onclick="goToSchedule(this)">
+                        Schedule
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Painting Modal -->
+    <div id="paintingModal" class="modal-overlay" data-service="painting">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Painting</h2>
+                <button class="close-btn" onclick="closeModal('paintingModal')">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="section">
+                    <h4>Included</h4>
+                    <ul>
+                        <li>Interior wall painting</li>
+                        <li>Primer application</li>
+                        <li>Color consultation</li>
+                    </ul>
+                </div>
+
+                <div class="section not-included">
+                    <h4>Not Included</h4>
+                    <ul>
+                        <li>Wallpaper installation</li>
+                        <li>Furniture painting</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="action-btn book-btn" onclick="goToBookNow(this)">
+                        Book Now
+                    </button>
+                    <button type="button" class="action-btn schedule-btn" onclick="goToSchedule(this)">
+                        Schedule
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Laundry Modal -->
+    <div id="laundryModal" class="modal-overlay" data-service="laundry">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Laundry</h2>
+                <button class="close-btn" onclick="closeModal('laundryModal')">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="section">
+                    <h4>Included</h4>
+                    <ul>
+                        <li>Washing</li>
+                        <li>Ironing</li>
+                        <li>Folding</li>
+                    </ul>
+                </div>
+
+                <div class="section not-included">
+                    <h4>Not Included</h4>
+                    <ul>
+                        <li>Dry cleaning</li>
+                        <li>Shoe & bag cleaning</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="action-btn book-btn" onclick="goToBookNow(this)">
+                        Book Now
+                    </button>
+                    <button type="button" class="action-btn schedule-btn" onclick="goToSchedule(this)">
+                        Schedule
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repairs Modal -->
+    <div id="repairsModal" class="modal-overlay" data-service="repairs">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h2>Repairs</h2>
+                <button class="close-btn" onclick="closeModal('repairsModal')">×</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="section">
+                    <h4>Included</h4>
+                    <ul>
+                        <li>Minor furniture repair</li>
+                        <li>Door & hinge fixing</li>
+                        <li>Curtain rod installation</li>
+                    </ul>
+                </div>
+
+                <div class="section not-included">
+                    <h4>Not Included</h4>
+                    <ul>
+                        <li>Structural repairs</li>
+                        <li>Custom carpentry</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="action-btn book-btn" onclick="goToBookNow(this)">
+                        Book Now
+                    </button>
+                    <button type="button" class="action-btn schedule-btn" onclick="goToSchedule(this)">
+                        Schedule
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'helphop/js/card.js' %}"></script>
+    <footer class="footer">
+        <p>© 2026 HELPHOP. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
